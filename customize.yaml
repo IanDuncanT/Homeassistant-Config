@@ -1,0 +1,17 @@
+media_player.apple_tv: {}
+remote.apple_tv: {}
+media_player.family: {}
+group.all_devices: {}
+sensor.pihole_ads_blocked_today:
+  unit_of_measurement: queries
+automation.set_off_alarm_while_armed_away:
+  homebridge_hidden: true
+automation.set_off_alarm_while_armed_home:
+  homebridge_hidden: true
+automation.set_off_alarm_while_armed_night:
+  homebridge_hidden: true
+device_tracker.ians_iphone:
+  friendly_name: Ian's iPhone
+device_tracker.ainsleys_iphone:
+  friendly_name: Ainsley's iPhone
+

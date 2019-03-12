@@ -1,0 +1,170 @@
+# Home assistant config - v0.3.0
+# 2019-02-24T16:30
+
+# Backend
+homeassistant:
+  name: Home
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  elevation: !secret home_elev
+  unit_system: imperial
+  time_zone: !secret time_zone
+  customize: !include customize.yaml
+
+updater:
+  include_used_components: true
+
+mqtt:
+    broker: !secret mqtt_ip
+    discovery: true
+    discovery_prefix: homeassistant
+
+influxdb:
+  host: !secret influx_host
+  database: home_assistant
+  username: !secret influx_username
+  password: !secret influx_password
+
+group: !include groups.yaml
+
+automation: !include automations.yaml
+
+script: !include scripts.yaml
+
+# Web Interface
+http:
+  api_password: !secret http_password
+  base_url: !secret base_url
+  ssl_certificate: !secret ssl_cert
+  ssl_key: !secret ssl_key
+
+duckdns:
+  domain: !secret duckdns_domain
+  access_token: !secret duckdns_token
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+panel_iframe:
+  pihole:
+    title: 'Pi Hole'
+    icon: 'mdi:dns'
+    url: !secret pi_hole_url
+  grafana:
+    title: 'Grafana'
+    icon: 'mdi:chart-timeline'
+    url: !secret grafana_url
+  portainer:
+    title: 'Portainer'
+    icon: 'mdi:docker'
+    url: !secret portainer_url
+
+conversation:
+
+tts:
+  - platform: google
+
+recorder:
+    purge_keep_days: 5
+    purge_interval: 1
+
+map:
+
+logbook:
+
+history:
+
+config:
+
+system_health:
+
+ios:
+
+homekit:
+
+# Map Zones
+zone:
+  - name: !secret middle_school_name
+    latitude: !secret middle_school_lat
+    longitude: !secret middle_school_long
+    icon: mdi:school
+  - name: !secret high_school_name
+    latitude: !secret high_school_lat
+    longitude: !secret high_school_long
+    icon: mdi:school
+  - name: !secret work_name
+    latitude: !secret work_lat
+    longitude: !secret work_long
+    icon: mdi:breifcase
+
+# Sensors
+sun:
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
+
+speedtestdotnet:
+  scan_interval:
+    minutes: 5
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+sensor:
+  # Pi-Hole
+  - platform: pi_hole
+    host: !secret pi_hole_host
+    monitored_conditions:
+      - 'ads_blocked_today'
+      - 'dns_queries_today'
+  # Home Assistant Uptime
+  - platform: uptime
+  # Moon Stage
+  - platform: moon
+
+binary_sensor:
+  # Windows and Doors
+  # Ian's Room
+  - platform: mqtt
+    state_topic: "home/windows/ian/left"
+    name: "Ian's Left Window Status"
+    payload_on: "1"
+    payload_off: "0"
+    device_class: window
+  - platform: mqtt
+    state_topic: "home/windows/ian/right"
+    name: "Ian's Right Window Status"
+    payload_on: "1"
+    payload_off: "0"
+    device_class: window
+  - platform: mqtt
+    state_topic: "home/doors/ian/entry"
+    name: "Ian's Entry Door Status"
+    payload_on: "1"
+    payload_off: "0"
+    device_class: door
+
+person:
+
+# Alarm
+alarm_control_panel:
+  - platform: manual_mqtt
+    name: "Alarm"
+    state_topic: home/alarm/state
+    command_topic: home/alarm/command
+    code: !secret alarm_code
+    pending_time: 30
+    delay_time: 20
+    trigger_time: 120
+    disarmed:
+      trigger_time: 0
+    armed_home:
+      pending_time: 0
+      delay_time: 0
+    armed_night:
+      pending_time: 0
+      delay_time: 0
+    triggered:
+      pending_time: 0

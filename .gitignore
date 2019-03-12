@@ -1,0 +1,18 @@
+# Files
+secrets.yaml
+ip_bans.yaml
+known_devices.yaml
+.homekit.state
+.ios.conf
+.uuid
+home-assistant_v2.db
+home-assistant_v2.db-shm
+home-assistant_v2.db-wal
+home-assistant.log
+
+# Folders
+.storage
+.cloud
+certbot
+certs
+www/images
