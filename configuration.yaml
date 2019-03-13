@@ -146,6 +146,12 @@ binary_sensor:
     payload_off: "0"
     device_class: door
 
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 192.168.1.0/22
+    exclude: 192.168.1.0/24
+    home_interval: 10
+
 person:
 
 # Alarm
