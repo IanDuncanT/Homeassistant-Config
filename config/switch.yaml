@@ -1,0 +1,3 @@
+- platform: mqtt
+  command_topic: "home/lights/ian/side-table"
+  name: ian_sidetable

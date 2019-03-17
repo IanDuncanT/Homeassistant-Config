@@ -1,0 +1,59 @@
+title: Automations
+path: automation
+icon: 'mdi:flash-auto'
+panel: false
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: automation.bedroom_security
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+              - type: entity-button
+                entity: automation.trigger_alarm_from_camera
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+              - type: entity-button
+                entity: automation.speak_text_from_alarm_tts
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+              - type: entity-button
+                entity: automation.garbage_and_recycling_reminder
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+          - break
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: automation.set_off_alarm_while_armed_home
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+              - type: entity-button
+                entity: automation.set_off_alarm_while_armed_night
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+              - type: entity-button
+                entity: automation.set_off_alarm_while_armed_away
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+          - break
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: automation.nws_announce_weather_alert
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+              - type: entity-button
+                entity: automation.nws_notification_weather_alert
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+              - type: entity-button
+                entity: automation.nws_weather_alert_pop_up_control
+                tap_action: toggle
+                icon: 'mdi:flash-auto'
+badges: []

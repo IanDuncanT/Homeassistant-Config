@@ -1,0 +1,17 @@
+# Pi-Hole
+- platform: pi_hole
+  host: !secret pi_hole_host
+  monitored_conditions:
+    - 'ads_blocked_today'
+    - 'dns_queries_today'
+
+# Home Assistant Uptime
+- platform: uptime
+
+# Moon Stage
+- platform: moon
+
+# NWS Warnings
+- platform: nws_alerts
+  name: nws_advisory
+  zone_id: !secret nws_zone

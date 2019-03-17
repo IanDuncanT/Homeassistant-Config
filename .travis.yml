@@ -2,7 +2,10 @@ language: python
 python:
   - "3.6"
 before_install:
-  - mv travis_secrets.yaml secrets.yaml
+  - mv travis_files/travis_secrets.yaml secrets.yaml
+  - mkdir certs
+  - mv travis_files/travis_fullchain.pem certs/fullchain.pem
+  - mv travis_files/travis_privkey.pem certs/privkey.pem
 install:
   - pip3 install homeassistant
 script:

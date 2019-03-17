@@ -1,0 +1,20 @@
+# Windows and Doors
+# Ian's Room
+- platform: mqtt
+  state_topic: "home/windows/ian/left"
+  name: "Ian's Left Window Status"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: window
+- platform: mqtt
+  state_topic: "home/windows/ian/right"
+  name: "Ian's Right Window Status"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: window
+- platform: mqtt
+  state_topic: "home/doors/ian/entry"
+  name: "Ian's Entry Door Status"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: door

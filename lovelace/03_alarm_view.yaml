@@ -1,0 +1,18 @@
+title: Alarm
+path: alarm
+icon: 'mdi:alarm-light'
+panel: false
+cards:
+  - type: entities
+    title: Windows and Doors
+    show_header_toggle: false
+    entities:
+      - binary_sensor.ian_s_left_window_status
+      - binary_sensor.ian_s_right_window_status
+      - binary_sensor.ian_s_entry_door_status
+  - entity: alarm_control_panel.alarm
+    states:
+      - arm_home
+      - arm_away
+    type: alarm-panel
+badges: []

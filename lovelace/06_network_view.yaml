@@ -1,0 +1,44 @@
+title: Network
+path: network
+icon: 'mdi:access-point-network'
+panel: false
+cards:
+  - entity: sensor.speedtest_download
+    max: 100
+    min: 0
+    name: Download Speed
+    severity:
+      green: 40
+      red: 20
+      yellow: 30
+    theme: Backend-selected
+    type: gauge
+  - entity: sensor.speedtest_upload
+    max: 10
+    min: 0
+    name: Upload Speed
+    severity:
+      green: 4
+      red: 2
+      yellow: 3
+    theme: Backend-selected
+    type: gauge
+  - entity: sensor.speedtest_ping
+    max: 50
+    min: 0
+    name: Ping
+    severity:
+      green: 10
+      red: 50
+      yellow: 20
+    theme: default
+    type: gauge
+  - entity: sensor.pi_hole_dns_queries_today
+    graph: line
+    icon: 'mdi:dns-outline'
+    type: sensor
+  - entity: sensor.pi_hole_ads_blocked_today
+    graph: line
+    icon: 'mdi:dns-outline'
+    type: sensor
+badges: []

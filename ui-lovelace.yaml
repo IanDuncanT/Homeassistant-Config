@@ -1,0 +1,10 @@
+resources: !include lovelace/00_resources.yaml
+
+title: Home
+views:
+  - !include lovelace/01_home_view.yaml
+  - !include lovelace/02_media_view.yaml
+  - !include lovelace/03_alarm_view.yaml
+  - !include lovelace/04_weather_view.yaml
+  - !include lovelace/05_automation_view.yaml
+  - !include lovelace/06_network_view.yaml

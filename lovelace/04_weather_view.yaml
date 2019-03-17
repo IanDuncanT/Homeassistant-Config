@@ -1,0 +1,31 @@
+title: Weather
+path: weather
+icon: 'mdi:weather-hurricane'
+panel: false
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.nws_advisory
+                name: Advisory Count
+              - type: entity-button
+                entity: script.nws_popup_on_wx_alert
+                tap_action: call-service
+                service: script.turn_on
+                icon: 'mdi:sim-alert'
+          - type: 'custom:vertical-stack-in-card'
+            title: Weather
+            cards:
+              - type: entities
+                show_header_toggle: false
+                entities:
+                  - entity: sun.sun
+                  - entity: sensor.moon
+              - type: 'custom:weather-card'
+                entity: weather.dark_sky
+badges: []

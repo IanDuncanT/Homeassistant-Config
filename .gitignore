@@ -9,6 +9,9 @@ home-assistant_v2.db
 home-assistant_v2.db-shm
 home-assistant_v2.db-wal
 home-assistant.log
+.smbdelete*
+*.cpython-37.pyc
+*.pyc
 
 # Folders
 .storage
@@ -16,3 +19,6 @@ home-assistant.log
 certbot
 certs
 www/images
+www/camera
+deps
+tts

@@ -1,0 +1,12 @@
+- name: !secret middle_school_name
+  latitude: !secret middle_school_lat
+  longitude: !secret middle_school_long
+  icon: mdi:school
+- name: !secret high_school_name
+  latitude: !secret high_school_lat
+  longitude: !secret high_school_long
+  icon: mdi:school
+- name: !secret work_name
+  latitude: !secret work_lat
+  longitude: !secret work_long
+  icon: mdi:breifcase

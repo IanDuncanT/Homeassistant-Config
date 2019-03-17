@@ -1,0 +1,3 @@
+- platform: switch
+  entity_id: switch.ian_sidetable
+  name: ian_sidetable_light

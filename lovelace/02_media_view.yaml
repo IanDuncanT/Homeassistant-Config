@@ -1,0 +1,17 @@
+title: Media
+path: media
+icon: 'mdi:television'
+panel: false
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: media-control
+            entity: media_player.apple_tv
+          - type: media-control
+            entity: media_player.family_room_directv
+          - type: media-control
+            entity: media_player.game_room_directv
+badges: []

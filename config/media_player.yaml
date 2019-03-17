@@ -1,0 +1,15 @@
+# Echo Dot
+- platform: alexa_media
+  email: !secret alexa_email
+  password: !secret alexa_pass
+  url: 'amazon.com'
+
+# DirecTV
+- platform: directv
+  host: !secret directv_ip
+  name: Family Room DirecTV
+  device: !secret directv_device_id1
+- platform: directv
+  host: !secret directv_ip
+  name: Game Room DirecTV
+  device: !secret directv_device_id2

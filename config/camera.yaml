@@ -1,0 +1,4 @@
+- platform: rpi_camera
+  name: main_rpi_cam
+  timelapse: 125
+  file_path: /config/www/camera/main_rpi_cam.png
