@@ -1,5 +1,5 @@
 # Homeassistant Configuration
-These are my basic config files for the home automation platform [homeassistant][ha-link].
+These are my basic config files for the home automation platform [homeassistant][l-ha].
 
 ---
 
@@ -12,9 +12,34 @@ These are my basic config files for the home automation platform [homeassistant]
 |Binary Sensor|MQTT Binary Sensor|[config/binary_sensor.yaml](config/binary_sensor.yaml)|
 ||Template Binary Sensor|[config/binary_sensor.yaml](config/binary_sensor.yaml)|
 |Camera|Raspberry Pi Camera|[config/camera.yaml](config/camera.yaml)
-|Environment|Sun|[configuraion.yaml](configuration.yaml)|
+|Environment|Sun|[configuration.yaml](configuration.yaml)|
+||Moon|[config/sensor.yaml](config/sensor.yaml)|
+|Frontend|Config|[configuration.yaml](configuration.yaml)|
+||Panel iFrame| [config/iframe.yaml](config/iframe.yaml)|
+|Geolocation|USGS Earthquakes|[config/geo_location.yaml](config/geo_location.yaml)|
+|History|History|[configuration.yaml](configuration.yaml)|
+||InfluxDB|[configuration.yaml](configuration.yaml)|
+||Logbook|[configuration.yaml](configuration.yaml)|
+||Recorder|[configuration.yaml](configuration.yaml)|
+|Hub|iOS|[config/ios.yaml](config/ios.yaml)|
+||MQTT|[configuration.yaml](configuration.yaml)|
+|Intent|Shopping List|[configuration.yaml](configuration.yaml)|
+|Light|Light Switch| [config/light.yaml](config/light.yaml)|
+|Media Player|Apple TV|[config/media_player.yaml](config/media_player.yaml)|
+||DirecTV|[config/media_player.yaml](config/media_player.yaml)|
+|Multimedia|Apple TV|[config/media_player.yaml](config/media_player.yaml)|
+|Network|Certificate Expiry|[config/sensor.yaml](config/sensor.yaml)|
+||DuckDNS|[configuration.yaml](configuration.yaml)|
+|Notifications|iOS|[config/ios.yaml](config/ios.yaml)|
+||Pushbullet|[config/notify.yaml](config/notify.yaml)|
+|Organization|Group|[config/groups.yaml](config/groups.yaml)|
+||Zone|[config/zone.yaml](config/zone.yaml)|
+|Presence Detection|Bluetooth LE Tracker|[config/device_tracker.yaml](config/device_tracker.yaml)|
+||Bluetooth Tracker|[config/device_tracker.yaml](config/device_tracker.yaml)|
+||NMAP|[config/device_tracker.yaml](config/device_tracker.yaml)|
+|Remote|Apple TV|[config/media_player.yaml](config/media_player.yaml)|
 
 
 
 
-[ha-link]: https://home-assistant.io
+[l-ha]: https://home-assistant.io
