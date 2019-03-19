@@ -25,9 +25,9 @@ These are my basic config files for the home automation platform [homeassistant]
 ||MQTT|[configuration.yaml](configuration.yaml)|
 |Intent|Shopping List|[configuration.yaml](configuration.yaml)|
 |Light|Light Switch| [config/light.yaml](config/light.yaml)|
-|Media Player|Apple TV|[config/media_player.yaml](config/media_player.yaml)|
+|Media Player|Apple TV|[configuration.yaml](configuration.yaml)|
 ||DirecTV|[config/media_player.yaml](config/media_player.yaml)|
-|Multimedia|Apple TV|[config/media_player.yaml](config/media_player.yaml)|
+|Multimedia|Apple TV|[configuration.yaml](configuration.yaml)|
 |Network|Certificate Expiry|[config/sensor.yaml](config/sensor.yaml)|
 ||DuckDNS|[configuration.yaml](configuration.yaml)|
 |Notifications|iOS|[config/ios.yaml](config/ios.yaml)|
@@ -37,7 +37,7 @@ These are my basic config files for the home automation platform [homeassistant]
 |Presence Detection|Bluetooth LE Tracker|[config/device_tracker.yaml](config/device_tracker.yaml)|
 ||Bluetooth Tracker|[config/device_tracker.yaml](config/device_tracker.yaml)|
 ||NMAP|[config/device_tracker.yaml](config/device_tracker.yaml)|
-|Remote|Apple TV|[config/media_player.yaml](config/media_player.yaml)|
+|Remote|Apple TV|[configuration.yaml](configuration.yaml)|
 
 
 
