@@ -22,6 +22,7 @@
     - service: alarm_control_panel.alarm_trigger
   hide_entity: true
   initial_state: true
+
 - id: '1530909494277'
   alias: Set off alarm while armed night
   trigger:
@@ -41,6 +42,7 @@
     - service: alarm_control_panel.alarm_trigger
   hide_entity: true
   initial_state: true
+
 - id: 8d7e0b89890040e6aa56d6b2757f40a3
   alias: Set off alarm while armed home
   trigger:
@@ -60,6 +62,22 @@
     - service: alarm_control_panel.alarm_trigger
   hide_entity: true
   initial_state: true
+
+- id: 'login-1'
+  alias: "Send notification upon failed login attempt"
+  trigger:
+    - platform: state
+      entity_id: persistent_notification.httplogin
+  condition:
+    - condition: template
+      value_template: "{{ trigger.to_state.state != off }}"
+  action:
+    - service: notify.pushbullet_ian
+      data_template:
+        title: "Failed Home Assistant login attempt!"
+        message: "{{ trigger.to_state.state }}"
+        data:
+          url: http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ states.persistent_notification.httplogin.state.split ("from ") [1]}}
 
 # Reminders
 - id: '1552519352232'
@@ -106,6 +124,7 @@
         push:
           category: 'camera'
         entity_id: camera.main_rpi_cam
+
 - id: 'alarm-trigger'
   alias: 'Trigger Alarm From Camera'
   trigger:
@@ -116,6 +135,7 @@
   action:
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.alarm
+
 - id: 'alarm-tts-speak'
   alias: 'Speak Text from Alarm TTS'
   trigger:
