@@ -38,8 +38,13 @@ These are my basic config files for the home automation platform [homeassistant]
 ||Bluetooth Tracker|[config/device_tracker.yaml](config/device_tracker.yaml)|
 ||NMAP|[config/device_tracker.yaml](config/device_tracker.yaml)|
 |Remote|Apple TV|[configuration.yaml](configuration.yaml)|
-
-
-
+|Sensor|iOS|[config/ios.yaml](config/ios.yaml)|
+||MQTT Sensor|[config/sensor.yaml](config/sensor.yaml)|
+||Speedtest.net|[config/sensor.yaml](config/sensor.yaml)|
+|Switch|MQTT Switch|[config/switch.yaml](config/switch.yaml)|
+|TTS|Google TTS|[config/tts.yaml](config/tts.yaml)|
+||Pico TTS|[config/tts.yaml](config/tts.yaml)|
+|Utility|Uptime Sensor|[config/sensor.yaml](config/sensor.yaml)|
+|Weather|Dark Sky Weather|[configuration.yaml](configuration.yaml)|
 
 [l-ha]: https://home-assistant.io
