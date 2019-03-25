@@ -3,7 +3,7 @@
   exclude: 
     - 192.168.1.0/24
     - 192.168.1.254
-home_interval: 10
+  home_interval: 10
 
 - platform: bluetooth_le_tracker
 
