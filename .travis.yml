@@ -4,8 +4,10 @@ python:
 before_install:
   - mv travis_files/travis_secrets.yaml secrets.yaml
   - mkdir certs
+  - mkdir www/camera
   - mv travis_files/travis_fullchain.pem certs/fullchain.pem
   - mv travis_files/travis_privkey.pem certs/privkey.pem
+  - mv travis_files/test-camera.png www/camera/main_rpi_cam.png
 install:
   - pip3 install homeassistant
 script:

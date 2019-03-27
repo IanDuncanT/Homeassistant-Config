@@ -1,5 +1,5 @@
 # Alarm Triggers
-- id: '1530556498503'
+- id: 'alarm-away'
   alias: Set off alarm while armed away
   trigger:
     - entity_id: binary_sensor.ians_left_window_status
@@ -23,7 +23,7 @@
   hide_entity: true
   initial_state: true
 
-- id: '1530909494277'
+- id: 'alarm-night'
   alias: Set off alarm while armed night
   trigger:
     - entity_id: binary_sensor.ians_left_window_status
@@ -43,7 +43,7 @@
   hide_entity: true
   initial_state: true
 
-- id: 8d7e0b89890040e6aa56d6b2757f40a3
+- id: 'alarm-home'
   alias: Set off alarm while armed home
   trigger:
     - entity_id: binary_sensor.ians_left_window_status
@@ -63,7 +63,7 @@
   hide_entity: true
   initial_state: true
 
-- id: 'login-1'
+- id: 'login-failed'
   alias: "Send notification upon failed login attempt"
   trigger:
     - platform: state
@@ -80,7 +80,7 @@
           url: http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ states.persistent_notification.httplogin.state.split ("from ") [1]}}
 
 # Reminders
-- id: '1552519352232'
+- id: 'reminder-garbage'
   alias: Garbage and Recycling Reminder
   trigger:
     - platform: time
@@ -101,7 +101,7 @@
   initial_state: true
 
 # Camera Notifications
-- id: 'camera-ian-1'
+- id: 'camera-notification'
   alias: 'Bedroom Security'
   initial_state: true
   hide_entity: true
@@ -125,7 +125,7 @@
           category: 'camera'
         entity_id: camera.main_rpi_cam
 
-- id: 'alarm-trigger'
+- id: 'camera-alarm-trigger'
   alias: 'Trigger Alarm From Camera'
   trigger:
     - platform: event
@@ -136,7 +136,7 @@
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.alarm
 
-- id: 'alarm-tts-speak'
+- id: 'camera-tts-speak'
   alias: 'Speak Text from Alarm TTS'
   trigger:
     - platform: event
