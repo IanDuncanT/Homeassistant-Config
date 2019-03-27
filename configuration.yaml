@@ -27,9 +27,9 @@ influxdb:
 
 group: !include config/groups.yaml
 
-automation: !include config/automations.yaml
+automation: !include automations.yaml
 
-script: !include config/scripts.yaml
+script: !include scripts.yaml
 
 # Web Interface
 http:
