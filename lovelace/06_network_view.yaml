@@ -4,27 +4,27 @@ icon: 'mdi:access-point-network'
 panel: false
 cards:
   - entity: sensor.speedtest_download
-    max: 100
+    max: 1000
     min: 0
     name: Download Speed
     severity:
-      green: 40
-      red: 20
-      yellow: 30
+      green: 600
+      red: 100
+      yellow: 400
     theme: Backend-selected
     type: gauge
   - entity: sensor.speedtest_upload
-    max: 10
+    max: 50
     min: 0
     name: Upload Speed
     severity:
-      green: 4
-      red: 2
-      yellow: 3
+      green: 30
+      red: 5
+      yellow: 20
     theme: Backend-selected
     type: gauge
   - entity: sensor.speedtest_ping
-    max: 50
+    max: 100
     min: 0
     name: Ping
     severity:

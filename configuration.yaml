@@ -25,7 +25,7 @@ influxdb:
   username: !secret influx_username
   password: !secret influx_password
 
-group: !include config/groups.yaml
+group: !include groups.yaml 
 
 automation: !include automations.yaml
 
@@ -34,7 +34,7 @@ script: !include scripts.yaml
 # Web Interface
 http:
   base_url: !secret base_url
-  ssl_certificate: !secret ssl_cert
+  ssl_certificate: !secret ssl_cert 
   ssl_key: !secret ssl_key
 
 duckdns:
@@ -103,8 +103,6 @@ device_tracker: !include config/device_tracker.yaml
 
 person:
 
-camera: !include config/camera.yaml
-
 shopping_list:
 
 apple_tv:
@@ -113,6 +111,12 @@ apple_tv:
     login_id: !secret apple_tv_login
 
 media_player: !include config/media_player.yaml
+
+alexa_media:
+  accounts:
+    - email: !secret alexa_email
+      password: !secret alexa_pass
+      url: !secret alexa_url
 
 geo_location: !include config/geo_location.yaml
 
