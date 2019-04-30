@@ -34,7 +34,7 @@ script: !include scripts.yaml
 # Web Interface
 http:
   base_url: !secret base_url
-  ssl_certificate: !secret ssl_cert
+  ssl_certificate: !secret ssl_cert 
   ssl_key: !secret ssl_key
 
 duckdns:

@@ -1,9 +1,17 @@
 - platform: nmap_tracker
   hosts: 192.168.1.0/22
-  exclude: 
+  exclude:
     - 192.168.1.0/24
     - 192.168.1.254
   home_interval: 10
+
+- platform: unifi
+  host: !secret unifi_host
+  username: !secret unifi_user
+  password: !secret unifi_pass
+  ssid_filter:
+    - !secret main_network_ssid
+    - !secret guest_network_ssid
 
 - platform: bluetooth_le_tracker
 
