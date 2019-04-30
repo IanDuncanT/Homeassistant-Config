@@ -7,7 +7,3 @@
   host: !secret directv_ip
   name: Game Room DirecTV
   device: !secret directv_device_id2
-- platform: alexa
-  email: !secret alexa_email
-  password: !secret alexa_pass
-  url: !secret alexa_url
