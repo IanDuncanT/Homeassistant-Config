@@ -12,6 +12,7 @@ home-assistant.log
 .smbdelete*
 *.cpython-37.pyc
 *.pyc
+*.pickle
 
 # Folders
 .storage
