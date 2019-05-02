@@ -30,6 +30,7 @@ These are my basic config files for the home automation platform [homeassistant]
 |Multimedia|Apple TV|[configuration.yaml](configuration.yaml)|
 |Network|Certificate Expiry|[config/sensor.yaml](config/sensor.yaml)|
 ||DuckDNS|[configuration.yaml](configuration.yaml)|
+||Unifi Controller|[configuration.yaml](configuration.yaml)|
 |Notifications|iOS|[config/ios.yaml](config/ios.yaml)|
 ||Pushbullet|[config/notify.yaml](config/notify.yaml)|
 |Organization|Group|[config/groups.yaml](config/groups.yaml)|
@@ -46,5 +47,8 @@ These are my basic config files for the home automation platform [homeassistant]
 ||Pico TTS|[config/tts.yaml](config/tts.yaml)|
 |Utility|Uptime Sensor|[config/sensor.yaml](config/sensor.yaml)|
 |Weather|Dark Sky Weather|[configuration.yaml](configuration.yaml)|
+|Custom Component|Alexa Media|[configuration.yaml](configuration.yaml)|
+||NWS Alerts|[config/sensor.yaml](config/sensor.yaml)|
+||iAqualink|[configuration.yaml](configuration.yaml)|
 
 [l-ha]: https://home-assistant.io
