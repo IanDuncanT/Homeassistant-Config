@@ -114,6 +114,7 @@ apple_tv:
   - host: !secret apple_tv_ip_2
     name: Living Room Apple Tv
     login_id: !secret apple_tv_login_2
+    credentials: !secret apple_tv_cred_2
 
 media_player: !include config/media_player.yaml
 
