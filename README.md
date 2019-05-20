@@ -6,14 +6,14 @@ This repository is a place to store my configuration for all of my smart home de
 ### Host Configuation
 Most of the services are run using docker with the exception of PiHole. I plan to migrate to docker compose for ease of use and updating later.
 
--**Home Assistant:** Homeassistant is an automation platform for automation and control.
--**Mosquitto:** Mosquitto is a MQTT broker designed to be run on light hardware
--**InfluxDB:** InfluxDB is a time series database for backing up home-assistant states and exporting to Grafana.
--**Grafana:** Grafana is a time based data visualization tool for easily creating dashboards.
--**Portainer:** Portainer is used for docker container management on this host and another computer.
--**Unifi Controller:** Unifi is an enterprise network device line by Ubiquiti Networks used for communication. This controller is used for management.
--**Discord Bots:** Other discord bots are self hosted using discord.js and other npm packages.
--**PiHole:** PiHole is a network adblocker that redirects dns requests for blocked domains to itself and rejects the connections.
+- **Home Assistant:** Homeassistant is an automation platform for automation and control.
+- **Mosquitto:** Mosquitto is a MQTT broker designed to be run on light hardware
+- **InfluxDB:** InfluxDB is a time series database for backing up home-assistant states and exporting to Grafana.
+- **Grafana:** Grafana is a time based data visualization tool for easily creating dashboards.
+- **Portainer:** Portainer is used for docker container management on this host and another computer.
+- **Unifi Controller:** Unifi is an enterprise network device line by Ubiquiti Networks used for communication. This controller is used for management.
+- **Discord Bots:** Other discord bots are self hosted using discord.js and other npm packages.
+- **PiHole:** PiHole is a network adblocker that redirects dns requests for blocked domains to itself and rejects the connections.
 
 ---
 
