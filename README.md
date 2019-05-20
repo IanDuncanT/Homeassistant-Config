@@ -1,5 +1,9 @@
 # Homeassistant Configuration
-These are my basic config files for the home automation platform [homeassistant][l-ha].
+This repository is a place to store my configuration for all of my smart home devices and automations using [Homeassistant][l-ha]. All files are edited manually using [Atom][l-atom] using the config in my Atom Config repo.
+
+---
+
+### Component Usage
 
 ---
 
@@ -52,3 +56,4 @@ These are my basic config files for the home automation platform [homeassistant]
 ||iAqualink|[configuration.yaml](configuration.yaml)|
 
 [l-ha]: https://home-assistant.io
+[l-atom]: https://atom.io
