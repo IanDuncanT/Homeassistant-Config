@@ -1,0 +1,68 @@
+title: Settings
+path: setting
+icon: 'mdi:settings'
+panel: false
+cards:
+  - type: vertical-stack
+    cards:
+      - type: glance
+        title: Home Assistant Stats
+        columns: 4
+        entities:
+          - entity: sensor.uptime
+          - entity: sensor.ssl_certificate_expiry
+            name: SSL Expiry
+          - entity: sensor.available_ha_version
+            name: Latest Version
+          - entity: sensor.installed_ha_version
+            name: Current Version
+      - type: glance
+        title: Component Count
+        columns: 4
+        entities:
+          - entity: sensor.count_automations
+            name: Automations
+            icon: mdi:autorenew
+          - entity: sensor.count_scripts
+            name: Scripts
+            icon: mdi:script-text-outline
+          - entity: sensor.count_zones
+            name: Zones
+            icon: mdi:map-marker-radius
+          - entity: sensor.count_device_trackers
+            name: Device Trackers
+            icon: mdi:map-marker
+          - entity: sensor.count_sensors
+            name: Sensors
+            icon: mdi:resistor
+          - entity: sensor.count_binary_sensors
+            name: Binary Sensors
+            icon: mdi:unfold-more-horizontal
+          - entity: sensor.count_switches
+            name: Switches
+            icon: mdi:light-switch
+          - entity: sensor.count_lights
+            name: Lights
+            icon: mdi:lightbulb
+      - type: custom:tracker-card
+      - type: entities
+        title: Automations
+        show_header_toggle: false
+        entities:
+          - entity: automation.garbage_and_recycling_reminder
+            type: custom:toggle-lock-entity-row
+          - entity: automation.set_off_alarm_while_armed_home
+            type: custom:toggle-lock-entity-row
+          - entity: automation.set_off_alarm_while_armed_night
+            type: custom:toggle-lock-entity-row
+          - entity: automation.set_off_alarm_while_armed_away
+            type: custom:toggle-lock-entity-row
+          - entity: automation.nws_announce_weather_alert
+            type: custom:toggle-lock-entity-row
+          - entity: automation.nws_notification_weather_alert
+            type: custom:toggle-lock-entity-row
+          - entity: automation.nws_weather_alert_pop_up_control
+            type: custom:toggle-lock-entity-row
+          - entity: automation.send_notification_upon_failed_login_attempt
+            type: custom:toggle-lock-entity-row
+badges: []

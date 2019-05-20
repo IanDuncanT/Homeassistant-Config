@@ -1,0 +1,5 @@
+view-pool:
+  paper-card-background-color: "rgba(0, 0, 0, 0.0)"
+  paper-grey-200: "#191919"
+  paper-item-icon-color: "#d3d3d3"
+  primary-text-color: "#202020"

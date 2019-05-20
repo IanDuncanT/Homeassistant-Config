@@ -1,0 +1,8 @@
+- host: !secret apple_tv_ip
+  name: Apple Tv
+  login_id: !secret apple_tv_login
+  credentials: !secret apple_tv_cred
+- host: !secret apple_tv_ip_2
+  name: Living Room Apple Tv
+  login_id: !secret apple_tv_login_2
+  credentials: !secret apple_tv_cred_2

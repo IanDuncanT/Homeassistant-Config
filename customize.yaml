@@ -1,0 +1,30 @@
+device_tracker.00_1e_c0_36_d6_99:
+  friendly_name: iAqualink
+device_tracker.70_73_cb_b3_a9_3c:
+  friendly_name: Airport Time Capsule
+device_tracker.50_87_b8_20_2f_36:
+  friendly_name: Tablo Network DVR
+device_tracker.apple_tv_657_localdomain:
+  friendly_name: Apple TV
+device_tracker.00_a0_96_e9_d9_c3:
+  friendly_name: DVD Player
+device_tracker.14_bd_61_a5_fb_37:
+  friendly_name: Kevin's SAP iPhone
+device_tracker.1c_1b_0d_ea_c3_48:
+  friendly_name: Ian's Desktop
+device_tracker.34_36_3b_5c_46_5e:
+  friendly_name: Ian's Macbook Air
+device_tracker.48_00_33_de_ca_3d:
+  friendly_name: AirTV Player
+device_tracker.5c_cf_7f_b2_fd_ca:
+  friendly_name: Ian's Contact-Window
+device_tracker.68_a8_6d_25_6d_22:
+  friendly_name: Kassandra's Macbook Pro
+device_tracker.78_9f_70_b1_07_c3:
+  friendly_name: Ian's iPhone
+device_tracker.84_41_67_46_b6_6d:
+  friendly_name: Kassandra's iPhone
+device_tracker.8c_85_90_e8_22_9e:
+  friendly_name: Kevin's iPhone
+device_tracker.90_dd_5d_9f_eb_46:
+  friendly_name: Apple TV 4K

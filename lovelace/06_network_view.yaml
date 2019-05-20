@@ -1,8 +1,44 @@
 title: Network
 path: network
-icon: 'mdi:access-point-network'
+icon: 'mdi:server-network'
 panel: false
 cards:
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:simple-clock-card
+        hide_seconds: true
+      - type: glance
+        title: Computer Connection Status
+        columns: 4
+        entities:
+          - entity: device_tracker.78_9f_70_b1_07_c3
+            name: Ian's iPhone
+          - entity: device_tracker.84_41_67_46_b6_6d
+            name: Kassandra's iPhone
+          - entity: device_tracker.8c_85_90_e8_22_9e
+            name: Kevin's iPhone
+          - entity: device_tracker.14_bd_61_a5_fb_37
+            name: Kevin's SAP iPhone
+          - entity: device_tracker.34_36_3b_5c_46_5e
+            name: Ian's Macbook Air
+      - type: glance
+        title: IoT Connection Status
+        columns: 4
+        entities:
+          - entity: device_tracker.00_1e_c0_36_d6_99
+            name: iAqualink
+          - entity: device_tracker.70_73_cb_b3_a9_3c
+            name: Time Capsule
+          - entity: device_tracker.50_87_b8_20_2f_36
+            name: Tablo
+          - entity: device_tracker.00_a0_96_e9_d9_c3
+            name: DVD Player
+          - entity: device_tracker.48_00_33_de_ca_3d
+            name: AirTV Player
+          - entity: device_tracker.apple_tv_657_localdomain
+            name: Apple TV
+          - entity: device_tracker.90_dd_5d_9f_eb_46
+            name: Apple TV 4K
   - entity: sensor.speedtest_download
     max: 1000
     min: 0

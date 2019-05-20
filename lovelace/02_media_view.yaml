@@ -9,9 +9,11 @@ cards:
         layout: vertical
         cards:
           - type: media-control
+            entity: media_player.living_room_apple_tv
+          - type: media-control
             entity: media_player.apple_tv
           - type: media-control
-            entity: media_player.family_room_directv
+            entity: media_player.ian_s_echo_dot
           - type: media-control
-            entity: media_player.game_room_directv
+            entity: media_player.kassandra_s_alexa_apps
 badges: []

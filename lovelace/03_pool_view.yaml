@@ -1,0 +1,109 @@
+title: Pool
+path: pool
+icon: 'mdi:pool'
+panel: true
+background: center / cover no-repeat url("/local/images/rooms/outside/pool_off.png") fixed
+theme: view-pool
+
+popup_cards:
+  switch.pool_heater:
+    title: Pool Heater Settings
+    card:
+      type: custom:simple-thermostat
+      entity: climate.pool
+  switch.spa_heater:
+    title: Spa Heater Settings
+    card:
+      type: custom:simple-thermostat
+      entity: climate.spa
+
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.0)
+          --ha-card-box-shadow: 0px
+          --primary-text-color: "#ffffff"
+        card:
+          type: custom:simple-clock-card
+          hide_seconds: true
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.0)
+          --ha-card-box-shadow: 0px
+          --primary-text-color: "#ffffff"
+        card:
+          type: custom:layout-card
+          layout: vertical
+          cards:
+            - type: glance
+              columns: 3
+              entities:
+                - entity: sensor.pool_temp
+                - entity: sensor.spa_temp
+                - entity: sensor.air_temp
+            - type: glance
+              columns: 3
+              entities:
+                - entity: switch.pool_pump
+                  icon: mdi:swim
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+                - entity: switch.spa_pump
+                  icon: mdi:swim
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+                - entity: switch.booster_pump
+                  name: Shears
+                  icon: mdi:waves
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+            - type: glance
+              columns: 3
+              entities:
+                - entity: switch.air_blower
+                  name: Spa Bubbles
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+                - entity: switch.aux1
+                  name: Aux 1
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+                - entity: switch.extra_aux
+                  name: Extra Aux
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+            - type: glance
+              columns: 2
+              entities:
+                - entity: light.pool_light
+                  name: Pool Light
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+                - entity: light.spa_light
+                  name: Spa Light
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+            - break
+            - type: custom:simple-thermostat
+              entity: climate.pool
+            - type: custom:simple-thermostat
+              entity: climate.spa
+badges: []

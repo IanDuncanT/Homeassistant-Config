@@ -1,0 +1,25 @@
+title: Alarm
+path: alarm
+icon: 'mdi:alarm-light'
+panel: false
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:simple-clock-card
+        hide_seconds: true
+      - type: glance
+        title: Ian's Room
+        columns: 3
+        entities:
+          - entity: binary_sensor.ian_s_left_window_status
+            name: Left Window
+          - entity: binary_sensor.ian_s_right_window_status
+            name: Right Window
+          - entity: binary_sensor.ian_s_entry_door_status
+            name: Entry Door
+      - entity: alarm_control_panel.alarm
+        states:
+          - arm_home
+          - arm_away
+        type: alarm-panel
+badges: []

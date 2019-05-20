@@ -1,3 +1,125 @@
+# Home Assistant Stats
+- platform: uptime
+
+- platform: version
+  name: Installed HA Version
+  source: local
+
+- platform: version
+  name: Available HA Version
+  source: docker
+
+- platform: cert_expiry
+  host: !secret cert_url
+  port: !secret cert_port
+
+# Component Tracker
+- platform: template
+  sensors:
+    # Count Automations
+    count_automations:
+      entity_id: sensor.date
+      value_template: >
+        {%- set domains = ['automation'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+
+    # Count Scripts
+    count_scripts:
+      entity_id: sensor.date
+      value_template: >
+        {%- set domains = ['script'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+
+    # Count Device Trackers
+    count_device_trackers:
+      entity_id: sensor.date
+      value_template: >
+        {%- set domains = ['device_tracker'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+
+    # Count Binary Sensors
+    count_binary_sensors:
+      entity_id: sensor.date
+      value_template: >
+        {%- set domains = ['binary_sensor'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+
+    # Count Sensors
+    count_sensors:
+      entity_id: sensor.date
+      value_template: >
+        {%- set domains = ['sensor'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+
+    # Count Switches
+    count_switches:
+      entity_id: sensor.date
+      value_template: >
+        {%- set domains = ['switch'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+
+    # Count Lights
+    count_lights:
+      entity_id: sensor.date
+      value_template: >
+        {%- set domains = ['light'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+
+    # Count Zones
+    count_zones:
+      entity_id: sensor.date
+      value_template: >
+        {%- set domains = ['zone'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+
 # Pi-Hole
 - platform: pi_hole
   host: !secret pi_hole_host
@@ -5,11 +127,20 @@
     - 'ads_blocked_today'
     - 'dns_queries_today'
 
-# Home Assistant Uptime
-- platform: uptime
-
 # Moon Stage
 - platform: moon
+
+# Air Quality Index
+- platform: airvisual
+  api_key: !secret airvisual_key
+  monitored_conditions:
+    - 'us'
+
+- platform: co2signal
+  token: !secret co2_key
+
+# Health
+- platform: flunearyou
 
 # NWS Warnings
 - platform: nws_alerts

@@ -1,9 +1,3 @@
-# DirecTV
-- platform: directv
-  host: !secret directv_ip
-  name: Family Room DirecTV
-  device: !secret directv_device_id1
-- platform: directv
-  host: !secret directv_ip
-  name: Game Room DirecTV
-  device: !secret directv_device_id2
+- platform: androidtv
+  name: AirTV Player
+  host: !secret airtv_ip

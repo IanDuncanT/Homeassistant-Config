@@ -1,0 +1,67 @@
+title: Weather
+path: weather
+icon: 'mdi:weather-hurricane'
+panel: false
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:simple-clock-card
+        hide_seconds: true
+      - type: glance
+        title: Flu Symptoms
+        columns: 2
+        entities:
+          - entity: sensor.cdc_level
+          - entity: sensor.cdc_level_2
+      - type: glance
+        columns: 3
+        entities:
+          - entity: sensor.avian_flu_symptoms
+            name: Avian Flu
+          - entity: sensor.dengue_fever_symptoms
+            name: Dengue Fever
+          - entity: sensor.leptospirosis_symptoms
+            name: Leptospirosis
+      - type: glance
+        columns: 4
+        entities:
+          - entity: sensor.flu_like_symptoms
+            name: Likely Flu
+          - entity: sensor.flu_symptoms
+            name: Flu
+          - entity: sensor.no_symptoms
+            name: No Symptoms
+          - entity: sensor.total_symptoms
+            name: Total Symptoms
+      - type: glance
+        title: Air Quality
+        columns: 3
+        entities:
+          - entity: sensor.u_s_air_pollution_level
+          - entity: sensor.u_s_air_quality_index
+          - entity: sensor.u_s_main_pollutant
+      - type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.nws_advisory
+                name: Advisory Count
+              - type: entity-button
+                entity: script.nws_popup_on_wx_alert
+                tap_action: call-service
+                service: script.turn_on
+                icon: 'mdi:sim-alert'
+          - type: 'custom:vertical-stack-in-card'
+            title: Weather
+            cards:
+              - type: entities
+                show_header_toggle: false
+                entities:
+                  - entity: sun.sun
+                  - entity: sensor.moon
+                  - entity: binary_sensor.aurora_visibility
+              - type: 'custom:weather-card'
+                entity: weather.dark_sky
+badges: []

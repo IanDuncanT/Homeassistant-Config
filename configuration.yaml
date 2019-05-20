@@ -9,10 +9,18 @@ homeassistant:
   elevation: !secret home_elev
   unit_system: imperial
   time_zone: !secret time_zone
-  customize: !include config/customize.yaml
+  customize: !include customize.yaml
 
 updater:
   include_used_components: true
+
+custom_updater:
+  track:
+    - cards
+    - components
+    - python-scripts
+  card_urls:
+    - https://raw.githubusercontent.com/custom-cards/information/master/repos.json
 
 mqtt:
     broker: !secret mqtt_ip
@@ -43,6 +51,10 @@ duckdns:
 
 frontend:
   themes: !include_dir_merge_named themes
+  extra_html_url:
+    - /local/custom-fa/solid.html
+    - /local/custom-fa/regular.html
+    - /local/custom-fa/brands.html
 
 lovelace:
   mode: yaml
@@ -85,13 +97,7 @@ weather:
   - platform: darksky
     api_key: !secret darksky_api
 
-speedtestdotnet:
-  scan_interval:
-    minutes: 5
-  monitored_conditions:
-    - ping
-    - download
-    - upload
+speedtestdotnet: !include config/speedtest.yaml
 
 sensor: !include config/sensor.yaml
 
@@ -107,14 +113,7 @@ person:
 
 shopping_list:
 
-apple_tv:
-  - host: !secret apple_tv_ip
-    name: Apple Tv
-    login_id: !secret apple_tv_login
-  - host: !secret apple_tv_ip_2
-    name: Living Room Apple Tv
-    login_id: !secret apple_tv_login_2
-    credentials: !secret apple_tv_cred_2
+apple_tv: !include config/apple_tv.yaml
 
 media_player: !include config/media_player.yaml
 

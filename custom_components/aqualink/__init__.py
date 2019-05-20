@@ -16,7 +16,7 @@ from homeassistant.helpers.typing import HomeAssistantType
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['iaqualink==0.1.2']
+REQUIREMENTS = ['iaqualink==0.2.3']
 
 ATTR_CONFIG = 'config'
 CONF_CLIMATES = 'climate'
@@ -70,8 +70,6 @@ async def async_setup_entry(hass: HomeAssistantType,
     switches = hass.data[DOMAIN][CONF_SWITCHES] = []
     climates = hass.data[DOMAIN][CONF_CLIMATES] = []
 
-    hass.loop.set_debug(True)
-
     # When arriving from configure integrations, we have no config data.
     if config_data is not None:
         session = async_create_clientsession(hass, cookie_jar=CookieJar(unsafe=True))
@@ -83,8 +81,13 @@ async def async_setup_entry(hass: HomeAssistantType,
             return False
 
         systems = await aqualink.get_systems()
-        pool = AqualinkSystem(aqualink, systems[0]['serial_number'])
-        devices = await pool.get_devices()
+        systems = list(systems.values())
+        if len(systems) == 0:
+            _LOGGER.error("No systems detected or supported.")
+            return False
+
+        # Only supporting the first system for now.
+        devices = await systems[0].get_devices()
 
         for dev in devices.values():
             if isinstance(dev, AqualinkSensor):

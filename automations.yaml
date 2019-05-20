@@ -1,4 +1,4 @@
-- id: '1530556498503'
+- id: alarm-trigger-away
   alias: Set off alarm while armed away
   trigger:
   - entity_id: binary_sensor.ians_left_window_status
@@ -21,7 +21,7 @@
   - service: alarm_control_panel.alarm_trigger
   hide_entity: true
   initial_state: true
-- id: '1530909494277'
+- id: alarm-trigger-night
   alias: Set off alarm while armed night
   trigger:
   - entity_id: binary_sensor.ians_left_window_status
@@ -40,7 +40,7 @@
   - service: alarm_control_panel.alarm_trigger
   hide_entity: true
   initial_state: true
-- id: 8d7e0b89890040e6aa56d6b2757f40a3
+- id: alarm-trigger-home
   alias: Set off alarm while armed home
   trigger:
   - entity_id: binary_sensor.ians_left_window_status
@@ -75,7 +75,7 @@
       data:
         url: http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ states.persistent_notification.httplogin.state.split
           ("from ") [1]}}
-- id: '1552519352232'
+- id: reminder-garbage
   alias: Garbage and Recycling Reminder
   trigger:
   - platform: time
@@ -94,51 +94,6 @@
     service: notify.ios_ians_iphone
   hide_entity: true
   initial_state: true
-- id: camera-ian-1
-  alias: Bedroom Security
-  initial_state: true
-  hide_entity: true
-  trigger:
-    platform: state
-    entity_id: binary_sensor.ians_entry_door_status
-    from: 'off'
-    to: 'on'
-  condition:
-    condition: template
-    value_template: '{{ states.person.ian.state != ''home'' }}'
-  action:
-    service: notify.ios_ians_iphone
-    data:
-      title: Door Opened
-      message: What action would you like to take?
-      data:
-        attachment:
-          content-type: png
-        push:
-          category: camera
-        entity_id: camera.main_rpi_cam
-- id: alarm-trigger
-  alias: Trigger Alarm From Camera
-  trigger:
-  - platform: event
-    event_type: ios.notification_action_fired
-    event_data:
-      actionName: TRIGGER_ALARM
-  action:
-  - service: alarm_control_panel.alarm_trigger
-    entity_id: alarm_control_panel.alarm
-- id: alarm-tts-speak
-  alias: Speak Text from Alarm TTS
-  trigger:
-  - platform: event
-    event_type: ios.notification_action_fired
-    event_data:
-      actionName: TTS_MESSAGE
-  action:
-  - service: tts.google_say
-    entity_id: all
-    data_template:
-      message: '{{ trigger.event.data[''textInput''] }}'
 - alias: NWS Weather Alert Pop Up Control
   id: nws-alert-1
   trigger:
@@ -265,13 +220,3 @@
         n\\n-\\n\\n')[1] }}\n{% else %}\n  Attention!,,,Attention!,,,The National\
         \ Weather Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
         n\\n-\\n\\n')[0] }}\n{% endif %}\n"
-- id: '1553480512870'
-  alias: New Automation
-  trigger:
-  - entity_id: alarm_control_panel.alarm
-    from: armed
-    platform: state
-    to: triggered
-  condition: []
-  action:
-  - service: apple_tv.apple_tv_scan

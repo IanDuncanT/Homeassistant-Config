@@ -46,7 +46,7 @@ cards:
     cards:
       - type: custom:compact-custom-header
         main_config: true
-        disable: false
+        disable: true
         header: true
         menu: show
         background_image: true
@@ -67,25 +67,25 @@ cards:
             cards:
               - type: picture-entity
                 entity: person.kevin
-                image: /local/images/kevin.png
+                image: /local/images/person/kevin.png
                 show_name: false
                 tap_action:
                   action: more-info
               - type: picture-entity
                 entity: person.kassandra
-                image: /local/images/kassandra.png
+                image: /local/images/person/kassandra.png
                 show_name: false
                 tap_action:
                   action: more-info
               - type: picture-entity
                 entity: person.ian
-                image: /local/images/ian.png
+                image: /local/images/person/ian.png
                 show_name: false
                 tap_action:
                   action: more-info
               - type: picture-entity
                 entity: person.ainsley
-                image: /local/images/ainsley.png
+                image: /local/images/person/ainsley.png
                 show_name: false
                 tap_action:
                   action: more-info

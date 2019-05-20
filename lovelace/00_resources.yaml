@@ -1,14 +1,24 @@
 - type: module
-  url: >-
-    /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.1
+  url: /customcards/github/maykar/compact-custom-header.js?track=true
 - type: module
-  url: >-
-    https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/weather-card/weather-card.min.js
+  url: https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/weather-card/weather-card.min.js
+- type: module
+  url: /customcards/github/nervetattoo/simple-thermostat.js?track=true
+- type: module
+  url: /customcards/github/custom-cards/tracker-card.js?track=true
 - type: js
-  url: /local/custom-lovelace/custom-vertical/vertical-stack-in-card.js?v=0.0.9
+  url: /local/custom-lovelace/custom-vertical/vertical-stack-in-card.js?v=1
 - type: js
   url: /local/custom-lovelace/card-tools/card-tools.js?v=1
+- type: js
+  url: /local/custom-lovelace/card-modder/card-modder.js?v=1
+- type: js
+  url: /local/custom-lovelace/card-loader/card-loader.js?v=1
 - type: js
   url: /local/custom-lovelace/popup-card/popup-card.js?v=1
 - type: js
   url: /local/custom-lovelace/layout-card/layout-card.js?v=1
+- type: js
+  url: /local/custom-lovelace/simple-clock-card/simple-clock-card.js?v=1
+- type: js
+  url: /local/custom-lovelace/toggle-lock-entity-row/toggle-lock-entity-row.js?v=1
