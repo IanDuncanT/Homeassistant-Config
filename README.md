@@ -19,6 +19,11 @@ Most of the services are run using docker with the exception of PiHole. I plan t
 
 ### Component Usage
 
+##### Network
+
+The network is composed of equipment from Ubiquiti's Unifi Line. The internet service we receive is 1 Gbps down and 50 Mbps up.
+|Unifi Security Gateway|Unifi Switch 8-60W|Unifi AP AC Pro|
+
 ---
 
 ### Components
