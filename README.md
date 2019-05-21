@@ -22,6 +22,7 @@ Most of the services are run using docker with the exception of PiHole. I plan t
 ##### Network
 
 The network is composed of equipment from Ubiquiti's Unifi Line. The internet service we receive is 1 Gbps down and 50 Mbps up.
+
 |Unifi Security Gateway|Unifi Switch 8-60W|Unifi AP AC Pro|
 |----------------------|------------------|---------------|
 |![alt text][i-network-usg]|![alt text][i-network-switch]|![alt text][i-network-ap]|
@@ -29,6 +30,7 @@ The network is composed of equipment from Ubiquiti's Unifi Line. The internet se
 ---
 
 ### Components
+
 |Categories|Component use|Files used in|
 |----------|-------------|-------------|
 |Alarm|Manual Alarm Control Panel with MQTT Support|[config/alarm.yaml](config/alarm.yaml)|
