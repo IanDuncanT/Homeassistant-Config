@@ -23,9 +23,9 @@ Most of the services are run using docker with the exception of PiHole. I plan t
 
 The network is composed of equipment from Ubiquiti's Unifi Line. The internet service we receive is 1 Gbps down and 50 Mbps up.
 
-|Unifi Security Gateway|Unifi Switch 8-60W|Unifi AP AC Pro|
-|----------------------|------------------|---------------|
-|![alt text][i-network-usg]|![alt text][i-network-switch]|![alt text][i-network-ap]|
+|Unifi Security Gateway|Unifi Switch 8-60W|Unifi AP AC Pro|Software Host (Toshiba Satellite A505-S6960)|
+|----------------------|------------------|---------------|--------------------------------------------|
+|![alt text][i-network-usg]|![alt text][i-network-switch]|![alt text][i-network-ap]|![alt text][i-network-host]|
 
 ---
 
@@ -83,3 +83,4 @@ The network is composed of equipment from Ubiquiti's Unifi Line. The internet se
 [i-network-usg]: documentation/images/network-usg.png "Unifi Security Gateway"
 [i-network-switch]: documentation/images/network-switch8-60W.png "Unifi 8 Port 60W POE Switch"
 [i-network-ap]: documentation/images/network-ap-ac-pro.png "Unifi AP AC Pro"
+[i-network-host]: documentation/images/network-host.png "Toshiba Satellite A505-S6960"
