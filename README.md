@@ -25,7 +25,7 @@ The network is composed of equipment from Ubiquiti's Unifi Line. The internet se
 
 |Unifi Security Gateway|Unifi Switch 8-60W|Unifi AP AC Pro|Software Host (Toshiba Satellite A505-S6960)|
 |----------------------|------------------|---------------|--------------------------------------------|
-|![alt text][i-network-usg]|![alt text][i-network-switch]|![alt text][i-network-ap]|![alt text][i-network-host]|
+|![USG][i-network-usg]|![Unifi Switch][i-network-switch]|![Unifi AP][i-network-ap]|![Software Host][i-network-host]|
 
 ---
 
