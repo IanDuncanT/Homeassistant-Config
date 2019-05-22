@@ -46,6 +46,12 @@ cards:
             icon: mdi:lightbulb
       - type: custom:tracker-card
       - type: entities
+        title: Modes
+        show_header_toggle: false
+        entities:
+          - entity: input_boolean.guest_mode
+            type: custom:toggle-lock-entity-row
+      - type: entities
         title: Automations
         show_header_toggle: false
         entities:

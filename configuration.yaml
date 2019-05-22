@@ -107,6 +107,8 @@ switch: !include config/switch.yaml
 
 light: !include config/light.yaml
 
+input_boolean: !include config/input_boolean.yaml
+
 device_tracker: !include config/device_tracker.yaml
 
 person:
