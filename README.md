@@ -3,7 +3,7 @@ This repository is a place to store my configuration for all of my smart home de
 
 ---
 
-### Host Configuation
+## Host Configuation
 Most of the services are run using docker with the exception of PiHole. I plan to migrate to docker compose for ease of use and updating later.
 
 - **Home Assistant:** Homeassistant is an automation platform for automation and control.
@@ -17,9 +17,9 @@ Most of the services are run using docker with the exception of PiHole. I plan t
 
 ---
 
-### Component Usage
+## Component Usage
 
-##### Network
+#### Network
 
 The network is composed of equipment from Ubiquiti's Unifi Line. The internet service we receive is 1 Gbps down and 50 Mbps up.
 
@@ -27,7 +27,7 @@ The network is composed of equipment from Ubiquiti's Unifi Line. The internet se
 |----------------------|------------------|---------------|--------------------------------------------|
 |![USG][i-network-usg]|![Unifi Switch][i-network-switch]|![Unifi AP][i-network-ap]|![Software Host][i-network-host]|
 
-##### Text to Speech
+#### Text to Speech
 
 Text to speech is composed of two apple tv devices and an echo dot 2nd generation using a custom component.
 
@@ -37,7 +37,7 @@ Text to speech is composed of two apple tv devices and an echo dot 2nd generatio
 
 ---
 
-### Components
+## Components
 
 |Categories|Component use|Files used in|
 |----------|-------------|-------------|
