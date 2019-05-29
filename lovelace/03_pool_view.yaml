@@ -3,7 +3,6 @@ path: pool
 icon: 'mdi:pool'
 panel: true
 background: center / cover no-repeat url("/local/images/rooms/outside/pool_off.png") fixed
-theme: view-pool
 
 popup_cards:
   switch.pool_heater:

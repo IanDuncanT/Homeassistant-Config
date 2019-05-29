@@ -1,12 +1,20 @@
 title: Weather
 path: weather
 icon: 'mdi:weather-hurricane'
-panel: false
+panel: true
+background: center / cover no-repeat url("/local/images/rooms/outside/weather_lightning.png") fixed
+
 cards:
   - type: custom:vertical-stack-in-card
     cards:
-      - type: custom:simple-clock-card
-        hide_seconds: true
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.0)
+          --ha-card-box-shadow: 0px
+          --primary-text-color: "#ffffff"
+        card:
+          type: custom:simple-clock-card
+          hide_seconds: true
       - type: glance
         title: Flu Symptoms
         columns: 2
