@@ -58,16 +58,6 @@ cards:
                 - entity: sensor.u_s_air_quality_index
                 - entity: sensor.u_s_main_pollutant
             - break
-            - type: horizontal-stack
-              cards:
-                - type: sensor
-                  entity: sensor.nws_advisory
-                  name: Advisory Count
-                - type: entity-button
-                  entity: script.nws_popup_on_wx_alert
-                  tap_action: call-service
-                  service: script.turn_on
-                  icon: 'mdi:sim-alert'
             - type: 'custom:vertical-stack-in-card'
               title: Weather
               cards:
@@ -77,6 +67,7 @@ cards:
                     - entity: sun.sun
                     - entity: sensor.moon
                     - entity: binary_sensor.aurora_visibility
+                    - entity: sensor.nws_advisory
                 - type: 'custom:weather-card'
                   entity: weather.dark_sky
 badges: []
