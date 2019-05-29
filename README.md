@@ -27,6 +27,14 @@ The network is composed of equipment from Ubiquiti's Unifi Line. The internet se
 |----------------------|------------------|---------------|--------------------------------------------|
 |![USG][i-network-usg]|![Unifi Switch][i-network-switch]|![Unifi AP][i-network-ap]|![Software Host][i-network-host]|
 
+##### Text to Speech
+
+Text to speech is composed of two apple tv devices and an echo dot 2nd generation using a custom component.
+
+|Apple TV 2nd Generation|Apple TV 4K|Amazon Echo Dot 2nd Generation|
+|-----------------------|-----------|------------------------------|
+|![Apple TV 2][i-tts-appletv2]|![Apple TV 4K][i-tts-appletv4k]|![Amazon Echo Dot 2][i-tts-amazonechodot2]|
+
 ---
 
 ### Components
@@ -84,3 +92,6 @@ The network is composed of equipment from Ubiquiti's Unifi Line. The internet se
 [i-network-switch]: documentation/images/network-switch8-60W.png "Unifi 8 Port 60W POE Switch"
 [i-network-ap]: documentation/images/network-ap-ac-pro.png "Unifi AP AC Pro"
 [i-network-host]: documentation/images/network-host.png "Toshiba Satellite A505-S6960"
+[i-tts-appletv2]: documentation/images/tts-apple-tv-2.png "Apple TV 2nd Generation"
+[i-tts-appletv4k]: documentation/images/tts-apple-tv-4k.png "Apple TV 4K Generation"
+[i-tts-amazonechodot2]: documentation/images/tts-echo2.png "Amazon Echo Dot 2nd Generation"
