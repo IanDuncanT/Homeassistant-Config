@@ -6,3 +6,6 @@
 [remote "origin"]
 	url = https://github.com/flz/hass-aqualink.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
