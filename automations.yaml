@@ -1,3 +1,4 @@
+# Alarm
 - alias: Set off alarm while armed away
   id: alarm-trigger-away
   trigger:
@@ -60,6 +61,7 @@
   hide_entity: true
   initial_state: true
 
+# NWS Alerts
 - alias: NWS Weather Alert Pop Up Control
   id: nws-alert-1
   trigger:
@@ -187,48 +189,81 @@
         \ Weather Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
         n\\n-\\n\\n')[0] }}\n{% endif %}\n"
 
-- alias: Send notification upon failed login attempt
-  id: login-1
+# Reminders and Alerts
+- alias: Startup Reminder
+  id: reminder-startup
   trigger:
-    - platform: state
-      entity_id: persistent_notification.httplogin
-  condition:
-    - condition: template
-      value_template: '{{ trigger.to_state.state != off }}'
-  action:
-    - service: notify.pushbullet_ian
-      data_template:
-        title: Failed Home Assistant login attempt!
-        message: '{{ trigger.to_state.state }}'
-        data:
-          url: http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ states.persistent_notification.httplogin.state.split
-            ("from ") [1]}}
-- alias: Garbage and Recycling Reminder
-  id: reminder-garbage
-  trigger:
-    - platform: time
-      at: 08:00:00
-  condition:
-    - condition: time
-      weekday:
-        - fri
+    - platform: homeassistant
+      event: start
   action:
     - data:
         data:
           push:
             badge: 1
-        title: Garbage and Recycling Day!
+        title: Homeassistant Started!
+        message: Make sure to check everything works.
+      service: notify.ios_ians_iphone
+  hide_entity: true
+  initial_state: true
+- alias: Shutdown Reminder
+  id: reminder-shutdown
+  trigger:
+    - platform: homeassistant
+      event: shutdown
+  action:
+    - data:
+        data:
+          push:
+            badge: 1
+        title: Homeassistant Shutdown!
+        message: If this was not on purpose, you may want to restart it now.
+      service: notify.ios_ians_iphone
+  hide_entity: true
+  initial_state: true
+- alias: Garbage and Recycling Reminder
+  id: reminder-garbage
+  trigger:
+    - platform: time
+      at: '19:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - thu
+  action:
+    - data:
+        data:
+          push:
+            badge: 1
+        title: Garbage and Recycling Tomorrow!
         message: Remember to take out the cans
       service: notify.ios_ians_iphone
   hide_entity: true
   initial_state: true
+- alias: Version Update Reminder
+  id: reminder-version
+  trigger:
+    - platform: sun
+      event: sunrise
+  condition:
+    - condition: template
+      value_template: "{{ states.sensor.available_ha_version.state != states.sensor.installed_ha_version.state }}"
+  action:
+    - data_template:
+        data:
+          push:
+            badge: 1
+        title: "Homeassistant has an update available!"
+        message: "Run the update.sh script in ~/volume-docker The new version is {{ states.sensor.available_ha_version.state }}"
+      service: notify.ios_ians_iphone
+  hide_entity: true
+  initial_state: true
 
-- alias: Sunrise Chnages
+# Time Triggers
+- alias: Sunrise Changes
   id: time-sunrise
   trigger:
     - platform: sun
       event: sunrise
-      offset: "-02:00:00"
   action:
     - service: input_boolean.turn_off
       entity_id:

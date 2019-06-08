@@ -1,4 +1,2 @@
 - platform: google_translate
   language: 'en'
-- platform: picotts
-  language: 'en-US'

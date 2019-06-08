@@ -1,3 +1,0 @@
-- platform: androidtv
-  name: AirTV Player
-  host: !secret airtv_ip

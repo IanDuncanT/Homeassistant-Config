@@ -58,10 +58,10 @@ cards:
                 - entity: sensor.u_s_air_quality_index
                 - entity: sensor.u_s_main_pollutant
             - break
-            - type: 'custom:vertical-stack-in-card'
-              title: Weather
+            - type: vertical-stack
               cards:
                 - type: entities
+                  title: Weather
                   show_header_toggle: false
                   entities:
                     - entity: sun.sun

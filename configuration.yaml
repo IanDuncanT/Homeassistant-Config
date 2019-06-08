@@ -29,7 +29,7 @@ mqtt:
 
 influxdb:
   host: !secret influx_host
-  database: home_assistant
+  database: homeassistant
   username: !secret influx_username
   password: !secret influx_password
 
