@@ -60,43 +60,30 @@ cards:
               user: dashboard
             config:
               show_tabs: 12
-      - type: custom:layout-card
-        layout: vertical
+      - type: horizontal-stack
         cards:
-          - type: horizontal-stack
-            cards:
-              - type: picture-entity
-                entity: person.kevin
-                image: /local/images/person/kevin.png
-                show_name: false
-                tap_action:
-                  action: more-info
-              - type: picture-entity
-                entity: person.kassandra
-                image: /local/images/person/kassandra.png
-                show_name: false
-                tap_action:
-                  action: more-info
-              - type: picture-entity
-                entity: person.ian
-                image: /local/images/person/ian.png
-                show_name: false
-                tap_action:
-                  action: more-info
-              - type: picture-entity
-                entity: person.ainsley
-                image: /local/images/person/ainsley.png
-                show_name: false
-                tap_action:
-                  action: more-info
-          - type: horizontal-stack
-            cards:
-              - type: picture-glance
-                title: Ian's Room
-                entities:
-                  - light.ian_sidetable_light
-                state_image:
-                  "on": /local/images/rooms/ian/on.png
-                  "off": /local/images/rooms/ian/off.png
-                entity: switch.ian_sidetable
+          - type: picture-entity
+            entity: person.kevin
+            image: /local/images/person/kevin.png
+            show_name: false
+            tap_action:
+              action: more-info
+          - type: picture-entity
+            entity: person.kassandra
+            image: /local/images/person/kassandra.png
+            show_name: false
+            tap_action:
+              action: more-info
+          - type: picture-entity
+            entity: person.ian
+            image: /local/images/person/ian.png
+            show_name: false
+            tap_action:
+              action: more-info
+          - type: picture-entity
+            entity: person.ainsley
+            image: /local/images/person/ainsley.png
+            show_name: false
+            tap_action:
+              action: more-info
 badges: []

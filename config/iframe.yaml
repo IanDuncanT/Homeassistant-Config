@@ -1,6 +1,6 @@
   pihole:
-    title: 'Pi Hole'
-    icon: 'mdi:dns'
+    title: 'Pi-Hole'
+    icon: 'mdi:server-network'
     url: !secret pi_hole_url
   portainer:
     title: 'Portainer'

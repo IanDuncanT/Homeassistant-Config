@@ -22,10 +22,7 @@ custom_updater:
   card_urls:
     - https://raw.githubusercontent.com/custom-cards/information/master/repos.json
 
-mqtt:
-    broker: !secret mqtt_ip
-    discovery: true
-    discovery_prefix: homeassistant
+mqtt: !include config/mqtt.yaml
 
 influxdb:
   host: !secret influx_host
@@ -42,8 +39,6 @@ script: !include scripts.yaml
 # Web Interface
 http:
   base_url: !secret base_url
-  ssl_certificate: !secret ssl_cert
-  ssl_key: !secret ssl_key
 
 duckdns:
   domain: !secret duckdns_domain

@@ -1,80 +1,68 @@
 title: Network
 path: network
 icon: 'mdi:server-network'
-panel: false
+panel: true
+background: center / cover no-repeat url("/local/images/rooms/network/network_web.png") fixed
+
 cards:
   - type: custom:vertical-stack-in-card
     cards:
-      - type: custom:simple-clock-card
-        hide_seconds: true
-      - type: glance
-        title: Computer Connection Status
-        columns: 4
-        entities:
-          - entity: device_tracker.78_9f_70_b1_07_c3
-            name: Ian's iPhone
-          - entity: device_tracker.84_41_67_46_b6_6d
-            name: Kassandra's iPhone
-          - entity: device_tracker.8c_85_90_e8_22_9e
-            name: Kevin's iPhone
-          - entity: device_tracker.14_bd_61_a5_fb_37
-            name: Kevin's SAP iPhone
-          - entity: device_tracker.34_36_3b_5c_46_5e
-            name: Ian's Macbook Air
-      - type: glance
-        title: IoT Connection Status
-        columns: 4
-        entities:
-          - entity: device_tracker.00_1e_c0_36_d6_99
-            name: iAqualink
-          - entity: device_tracker.70_73_cb_b3_a9_3c
-            name: Time Capsule
-          - entity: device_tracker.50_87_b8_20_2f_36
-            name: Tablo
-          - entity: device_tracker.00_a0_96_e9_d9_c3
-            name: DVD Player
-          - entity: device_tracker.48_00_33_de_ca_3d
-            name: AirTV Player
-          - entity: device_tracker.apple_tv_657_localdomain
-            name: Apple TV
-          - entity: device_tracker.90_dd_5d_9f_eb_46
-            name: Apple TV 4K
-  - entity: sensor.speedtest_download
-    max: 1000
-    min: 0
-    name: Download Speed
-    severity:
-      green: 600
-      red: 100
-      yellow: 400
-    theme: Backend-selected
-    type: gauge
-  - entity: sensor.speedtest_upload
-    max: 50
-    min: 0
-    name: Upload Speed
-    severity:
-      green: 30
-      red: 5
-      yellow: 20
-    theme: Backend-selected
-    type: gauge
-  - entity: sensor.speedtest_ping
-    max: 100
-    min: 0
-    name: Ping
-    severity:
-      green: 10
-      red: 50
-      yellow: 20
-    theme: default
-    type: gauge
-  - entity: sensor.pi_hole_dns_queries_today
-    graph: line
-    icon: 'mdi:dns-outline'
-    type: sensor
-  - entity: sensor.pi_hole_ads_blocked_today
-    graph: line
-    icon: 'mdi:dns-outline'
-    type: sensor
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.0)
+          --ha-card-box-shadow: 0px
+          --primary-text-color: "#ffffff"
+        card:
+          type: custom:simple-clock-card
+          hide_seconds: true
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.0)
+          --primary-background-color: rgba(0, 0, 0, 0.0)
+          --secondary-background-color: rgba(0, 0, 0, 0.0)
+          --ha-card-box-shadow: 0px
+          --primary-text-color: '#ffffff'
+        card:
+          type: custom:layout-card
+          layout: vertical
+          cards:
+            - entity: sensor.speedtest_download
+              max: 1000
+              min: 0
+              name: Download Speed
+              severity:
+                green: 600
+                red: 100
+                yellow: 400
+              theme: Backend-selected
+              type: gauge
+            - entity: sensor.speedtest_upload
+              max: 50
+              min: 0
+              name: Upload Speed
+              severity:
+                green: 30
+                red: 5
+                yellow: 20
+              theme: Backend-selected
+              type: gauge
+            - entity: sensor.speedtest_ping
+              max: 100
+              min: 0
+              name: Ping
+              severity:
+                green: 10
+                red: 50
+                yellow: 20
+              theme: default
+              type: gauge
+            - break
+            - entity: sensor.pi_hole_dns_queries_today
+              graph: line
+              icon: 'mdi:dns-outline'
+              type: sensor
+            - entity: sensor.pi_hole_ads_blocked_today
+              graph: line
+              icon: 'mdi:dns-outline'
+              type: sensor
 badges: []

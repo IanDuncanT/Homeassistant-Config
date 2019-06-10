@@ -62,132 +62,97 @@
   initial_state: true
 
 # NWS Alerts
-- alias: NWS Weather Alert Pop Up Control
-  id: nws-alert-1
-  trigger:
-    - platform: state
-      entity_id: sensor.nws_alerts
-  condition:
-    - condition: template
-      value_template: '{{states.sensor.nws_alerts.state | int > 0}}'
-    - condition: template
-      value_template: '{{ trigger.to_state.state|float > trigger.from_state.state|float
-        }}'
-  action:
-    - service: script.nws_popup_on_wx_alert
-      data_template:
-        title: "{% if states.sensor.nws_alerts.attributes.title.split(' - ')[5] is defined\
-          \ %}\n  \"{{ states.sensor.nws_alerts.attributes.title.split(' - ')[5] }}\"\
-          \n{% elif states.sensor.nws_alerts.attributes.title.split(' - ')[4] is defined\
-          \ %}\n  \"{{ states.sensor.nws_alerts.attributes.title.split(' - ')[4] }}\"\
-          \n{% elif states.sensor.nws_alerts.attributes.title.split(' - ')[3] is defined\
-          \ %}\n  \"{{ states.sensor.nws_alerts.attributes.title.split(' - ')[3] }}\"\
-          \n{% elif states.sensor.nws_alerts.attributes.title.split(' - ')[2] is defined\
-          \ %}\n  \"{{ states.sensor.nws_alerts.attributes.title.split(' - ')[2] }}\"\
-          \n{% elif states.sensor.nws_alerts.attributes.title.split(' - ')[1] is defined\
-          \ %}\n  \"{{ states.sensor.nws_alerts.attributes.title.split(' - ')[1] }}\"\
-          \n{% else %}\n  \"{{ states.sensor.nws_alerts.attributes.title.split(' - ')[0]\
-          \ }}\"\n{% endif %}\n"
-        message: "{% if states.sensor.nws_alerts.attributes.display_desc.split('\\n\\\
-          n-\\n\\n')[5] is defined %}\n  \"{{ states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[5] }}\"\n{% elif states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[4] is defined %}\n  \"{{ states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[4] }}\"\n{% elif states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[3] is defined %}\n  \"{{ states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[3] }}\"\n{% elif states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[2] is defined %}\n  \"{{ states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[2] }}\"\n{% elif states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[1] is defined %}\n  \"{{ states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[1] }}\"\n{% else %}\n  \"{{ states.sensor.nws_alerts.attributes.display_desc.split('\\\
-          n\\n-\\n\\n')[0] }}\"\n{% endif %}\n"
 - alias: NWS Notification Weather Alert
   id: nws-alert-2
   trigger:
     - platform: state
-      entity_id: sensor.nws_alerts
+      entity_id: sensor.nws_advisory
   condition:
     - condition: template
-      value_template: '{{states.sensor.nws_alerts.state | int > 0}}'
+      value_template: '{{states.sensor.nws_advisory.state | int > 0}}'
     - condition: template
       value_template: '{{ trigger.to_state.state|float > trigger.from_state.state|float
         }}'
   action:
     - service: notify.ios_ians_iphone
       data_template:
-        message: "{% if states.sensor.nws_alerts.attributes.title.split(' - ')[5] is\
-          \ defined %}\n  \"NWS: {{ states.sensor.nws_alerts.attributes.title.split('\
-          \ - ')[5] }}\"\n{% elif states.sensor.nws_alerts.attributes.title.split('\
-          \ - ')[4] is defined %}\n  \"NWS: {{ states.sensor.nws_alerts.attributes.title.split('\
-          \ - ')[4] }}\"\n{% elif states.sensor.nws_alerts.attributes.title.split('\
-          \ - ')[3] is defined %}\n  \"NWS: {{ states.sensor.nws_alerts.attributes.title.split('\
-          \ - ')[3] }}\"\n{% elif states.sensor.nws_alerts.attributes.title.split('\
-          \ - ')[2] is defined %}\n  \"NWS: {{ states.sensor.nws_alerts.attributes.title.split('\
-          \ - ')[2] }}\"\n{% elif states.sensor.nws_alerts.attributes.title.split('\
-          \ - ')[1] is defined %}\n  \"NWS: {{ states.sensor.nws_alerts.attributes.title.split('\
-          \ - ')[1] }}\"\n{% else %}\n  \"NWS: {{ states.sensor.nws_alerts.attributes.title.split('\
+        message: "{% if states.sensor.nws_advisory.attributes.title.split(' - ')[5] is\
+          \ defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[5] }}\"\n{% elif states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[4] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[4] }}\"\n{% elif states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[3] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[3] }}\"\n{% elif states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[2] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[2] }}\"\n{% elif states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[1] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[1] }}\"\n{% else %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
           \ - ')[0] }}\"\n{% endif %}\n"
 - alias: NWS Announce Weather Alert
   id: nws-alert-3
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: sensor.nws_alerts
+      entity_id: sensor.nws_advisory
   condition:
-    condition: and
-    conditions:
-      - condition: template
-        value_template: '{{states.sensor.nws_alerts.state | int > 0}}'
-      - condition: template
-        value_template: '{{ trigger.to_state.state|float > trigger.from_state.state|float
-          }}'
-      - condition: template
-        value_template: '{{ ((''Severe'' in states.sensor.nws_alerts.attributes.title)
-          or (''Tornado'' in states.sensor.nws_alerts.attributes.title)) and ''Warning''
-          in states.sensor.nws_alerts.attributes.title }}'
+    - condition: template
+      value_template: '{{states.sensor.nws_advisory.state | int > 0}}'
+    - condition: template
+      value_template: '{{ trigger.to_state.state|float > trigger.from_state.state|float
+        }}'
+    - condition: template
+      value_template: '{{ ((''Severe'' in states.sensor.nws_advisory.attributes.title)
+        or (''Tornado'' in states.sensor.nws_advisory.attributes.title)) and ''Warning''
+        in states.sensor.nws_advisory.attributes.title }}'
   action:
-  - service: tts.google_say
-    data_template:
-      entity_id: all
-      message: "{% if states.sensor.nws_alerts.attributes.spoken_desc.split('\\n\\\
-        n-\\n\\n')[5] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[5] }}.\n{% elif states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[4] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[4] }}\n{% elif states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[3] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[3] }}\n{% elif states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[2] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[2] }}\n{% elif states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[1] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[1] }}\n{% else %}\n  Attention!,,,Attention!,,,The National\
-        \ Weather Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[0] }}\n{% endif %}\n"
-  - delay: 00:00:15
-  - service: tt.google_say
-    data_template:
-      entity_id: all
-      message: "{% if states.sensor.nws_alerts.attributes.spoken_desc.split('\\n\\\
-        n-\\n\\n')[5] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[5] }}.\n{% elif states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[4] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[4] }}\n{% elif states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[3] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[3] }}\n{% elif states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[2] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[2] }}\n{% elif states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[1] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
-        \ Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[1] }}\n{% else %}\n  Attention!,,,Attention!,,,The National\
-        \ Weather Service Has issued a {{ states.sensor.nws_alerts.attributes.spoken_desc.split('\\\
-        n\\n-\\n\\n')[0] }}\n{% endif %}\n"
+    - service: tts.google_translate_say
+      data_template:
+        entity_id: all
+        message: "{% if states.sensor.nws_advisory.attributes.spoken_desc.split('\\n\\\
+          n-\\n\\n')[5] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[5] }}.\n{% elif states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[4] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[4] }}\n{% elif states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[3] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[3] }}\n{% elif states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[2] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[2] }}\n{% elif states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[1] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[1] }}\n{% else %}\n  Attention!,,,Attention!,,,The National\
+          \ Weather Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[0] }}\n{% endif %}\n"
+    - delay: 00:00:15
+    - service: tts.google_translate_say
+      data_template:
+        entity_id: all
+        message: "{% if states.sensor.nws_advisory.attributes.spoken_desc.split('\\n\\\
+          n-\\n\\n')[5] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[5] }}.\n{% elif states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[4] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[4] }}\n{% elif states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[3] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[3] }}\n{% elif states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[2] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[2] }}\n{% elif states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[1] is defined %}\n  Attention!,,,Attention!,,,The National Weather\
+          \ Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[1] }}\n{% else %}\n  Attention!,,,Attention!,,,The National\
+          \ Weather Service Has issued a {{ states.sensor.nws_advisory.attributes.spoken_desc.split('\\\
+          n\\n-\\n\\n')[0] }}\n{% endif %}\n"
+    - delay: 00:00:15
+    - service: remote.send_command
+      entity_id: remote.living_room_apple_tv
+      data:
+        command: 'menu'
 
 # Reminders and Alerts
 - alias: Startup Reminder

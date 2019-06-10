@@ -28,3 +28,21 @@ device_tracker.8c_85_90_e8_22_9e:
   friendly_name: Kevin's iPhone
 device_tracker.90_dd_5d_9f_eb_46:
   friendly_name: Apple TV 4K
+device_tracker.d0_25_98_08_8f_fe:
+  friendly_name: Ainsley's iPhone
+device_tracker.9c_20_7b_a5_30_d1:
+  friendly_name: Apple TV
+device_tracker.00_fc_8b_94_a2_3d:
+  friendly_name: Amazon Echo Dot
+device_tracker.b4_fb_e4_85_9b_cb:
+  friendly_name: Unifi 8 Port Switch
+device_tracker.b4_fb_e4_d9_c3_de:
+  friendly_name: Unifi Upstairs AP AC Pro
+device_tracker.b4_fb_e4_28_f0_1b:
+  friendly_name: Unifi Security Gateway
+device_tracker.b4_fb_e4_d9_ca_e0:
+  friendly_name: Unifi Downstairs AP AC Pro
+device_tracker.hp16dcef_localdomain:
+  friendly_name: HP Printer
+device_tracker.iaqualink_6u6_localdomain:
+  friendly_name: AquaLink Pool Controller

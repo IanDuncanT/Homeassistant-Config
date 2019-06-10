@@ -80,6 +80,8 @@ cards:
                   type: custom:toggle-lock-entity-row
                 - entity: automation.shutdown_reminder
                   type: custom:toggle-lock-entity-row
+                - entity: automation.version_update_reminder
+                  type: custom:toggle-lock-entity-row
                 - entity: automation.sunrise_changes
                   type: custom:toggle-lock-entity-row
                 - entity: automation.garbage_and_recycling_reminder
@@ -93,7 +95,5 @@ cards:
                 - entity: automation.nws_announce_weather_alert
                   type: custom:toggle-lock-entity-row
                 - entity: automation.nws_notification_weather_alert
-                  type: custom:toggle-lock-entity-row
-                - entity: automation.nws_weather_alert_pop_up_control
                   type: custom:toggle-lock-entity-row
 badges: []

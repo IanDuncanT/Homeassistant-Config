@@ -1,0 +1,103 @@
+version: "3.7"
+services:
+  portainer:
+    image: portainer/portainer:latest
+    container_name: "Portainer"
+    command: -H tcp://192.168.1.67:2375 --ssl --sslcert /certs/cert.pem --sslkey /certs/privkey.pem
+    restart: always
+    network_mode: host
+    ports:
+      - '9000:9000'
+    volumes:
+      - /home/$USER/volume-certs:/certs
+      - /home/$USER/volume-portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/letsencrypt:/etc/letsencrypt
+
+  esphomeyaml: 
+    image: ottowinter/esphomeyaml:latest
+    container_name: "ESPHome-YAML"
+    command: esphomeyaml dashboard
+    restart: always
+    network_mode: host
+    ports:
+      - '6052:6052'
+      - '6123:6123'
+    volumes:
+      - /home/$USER/volume-esphome:/config
+    environment:
+      - TZ=America/Chicago
+
+  mqtt:
+    image: eclipse-mosquitto:latest
+    container_name: "Mosquitto-MQTT"
+    restart: always
+    network_mode: host
+    ports:
+      - '1883:1883'
+      - '9001:9001'
+    volumes:
+      - /home/$USER/volume-mosquitto/conf.d:/etc/mosquitto/conf.d
+      - /home/$USER/volume-mosquitto:/mosquitto
+      - /home/$USER/volume-mosquitto/data:/mosquitto/data
+      - /home/$USER/volume-mosquitto/log:/mosquitto/log
+      - /home/$USER/volume-mosquitto/varlog:/var/log/mosquitto
+    environment:
+      - TZ=America/Chicago
+
+  influxdb:
+    image: influxdb:latest
+    container_name: "InfluxDB"
+    environment:
+      - TZ=America/Chicago
+    network_mode: host
+    ports:
+      - '8083:8083'
+      - '8086:8086'
+    restart: always 
+    volumes:
+      - /home/$USER/volume-influx:/var/lib/influxdb
+
+  home-assistant:
+    image: homeassistant/home-assistant:latest
+    container_name: "Home-Assistant"
+    restart: always
+    depends_on:
+      - unifi
+      - influxdb
+      - mqtt 
+    network_mode: host
+    ports:
+      - '8123:8123'
+    volumes:
+      - /home/$USER/volume-home-assistant:/config
+      - /home/$USER/volume-certs:/certs
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/letsencrypt:/etc/letsencrypt 
+    environment:
+      - TZ=America/Chicago
+
+  unifi:
+    image: linuxserver/unifi-controller
+    container_name: "Unifi"
+    restart: always
+    volumes:
+      - /home/$USER/volume-unifi:/config 
+    network_mode: host
+    ports:
+      - '3478:3478/udp'
+      - '10001:10001/udp'
+      - '6789:6789/tcp'
+      - '8080:8080/tcp'
+      - '8081:8081/tcp'
+      - '8880:8880/tcp'
+      - '8443:8443/tcp'
+      - '8843:8843/tcp'
+    environment:
+      - TZ=America/New_York
+
+  ricebot:
+    build: /home/$USER/docker/ricebotjs/    
+    container_name: "Ricebot"
+    restart: always
+    network_mode: host

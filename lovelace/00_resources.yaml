@@ -7,17 +7,17 @@
 - type: module
   url: /customcards/github/custom-cards/tracker-card.js?track=true
 - type: js
+  url: /customcards/github/thomasloven/card-tools.js?track=true
+- type: js
+  url: /customcards/github/thomasloven/popup-card.js?track=true
+- type: js
+  url: /customcards/github/thomasloven/card-modder.js?track=true
+- type: js
+  url: /customcards/github/thomasloven/layout-card.js?track=true
+- type: js
   url: /local/custom-lovelace/custom-vertical/vertical-stack-in-card.js?v=1
 - type: js
-  url: /local/custom-lovelace/card-tools/card-tools.js?v=1
-- type: js
-  url: /local/custom-lovelace/card-modder/card-modder.js?v=1
-- type: js
   url: /local/custom-lovelace/card-loader/card-loader.js?v=1
-- type: js
-  url: /local/custom-lovelace/popup-card/popup-card.js?v=1
-- type: js
-  url: /local/custom-lovelace/layout-card/layout-card.js?v=1
 - type: js
   url: /local/custom-lovelace/simple-clock-card/simple-clock-card.js?v=1
 - type: js
