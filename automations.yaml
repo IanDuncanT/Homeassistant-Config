@@ -62,8 +62,8 @@
   initial_state: true
 
 # NWS Alerts
-- alias: NWS Notification Weather Alert
-  id: nws-alert-2
+- alias: NWS Notification Weather Alert Ian
+  id: nws-alert-ian
   trigger:
     - platform: state
       entity_id: sensor.nws_advisory
@@ -76,7 +76,7 @@
   action:
     - service: notify.ios_ians_iphone
       data_template:
-        message: "{% if states.sensor.nws_advisory.attributes.title.split(' - ')[5] is\
+        title: "{% if states.sensor.nws_advisory.attributes.title.split(' - ')[5] is\
           \ defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
           \ - ')[5] }}\"\n{% elif states.sensor.nws_advisory.attributes.title.split('\
           \ - ')[4] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
@@ -88,8 +88,36 @@
           \ - ')[1] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
           \ - ')[1] }}\"\n{% else %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
           \ - ')[0] }}\"\n{% endif %}\n"
+        message: "{{ states.sensor.nws_advisory.attributes.display_desc }}"
+- alias: NWS Notification Weather Alert Kassandra
+  id: nws-alert-kassandra
+  trigger:
+    - platform: state
+      entity_id: sensor.nws_advisory
+  condition:
+    - condition: template
+      value_template: '{{states.sensor.nws_advisory.state | int > 0}}'
+    - condition: template
+      value_template: '{{ trigger.to_state.state|float > trigger.from_state.state|float
+        }}'
+  action:
+    - service: notify.ios_kassandras_iphone
+      data_template:
+        title: "{% if states.sensor.nws_advisory.attributes.title.split(' - ')[5] is\
+          \ defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[5] }}\"\n{% elif states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[4] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[4] }}\"\n{% elif states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[3] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[3] }}\"\n{% elif states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[2] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[2] }}\"\n{% elif states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[1] is defined %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[1] }}\"\n{% else %}\n  \"NWS: {{ states.sensor.nws_advisory.attributes.title.split('\
+          \ - ')[0] }}\"\n{% endif %}\n"
+        message: "{{ states.sensor.nws_advisory.attributes.display_desc }}"
 - alias: NWS Announce Weather Alert
-  id: nws-alert-3
+  id: nws-alert-tts
   initial_state: 'on'
   trigger:
     - platform: state
@@ -160,6 +188,10 @@
   trigger:
     - platform: homeassistant
       event: start
+  condition:
+    - condition: state
+      entity_id: input_boolean.notify_ian
+      state: 'on'
   action:
     - data:
         data:
@@ -175,6 +207,10 @@
   trigger:
     - platform: homeassistant
       event: shutdown
+  condition:
+    - condition: state
+      entity_id: input_boolean.notify_ian
+      state: 'on'
   action:
     - data:
         data:
@@ -185,8 +221,8 @@
       service: notify.ios_ians_iphone
   hide_entity: true
   initial_state: true
-- alias: Garbage and Recycling Reminder
-  id: reminder-garbage
+- alias: Garbage and Recycling Reminder Ian
+  id: reminder-garbage-ian
   trigger:
     - platform: time
       at: '19:00:00'
@@ -194,6 +230,9 @@
     - condition: time
       weekday:
         - thu
+    - condition: state
+      entity_id: input_boolean.notify_ian
+      state: 'on'
   action:
     - data:
         data:
@@ -204,6 +243,28 @@
       service: notify.ios_ians_iphone
   hide_entity: true
   initial_state: true
+- alias: Garbage and Recycling Reminder Kassandra
+  id: reminder-garbage-kassandra
+  trigger:
+    - platform: time
+      at: '19:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - thu
+    - condition: state
+      entity_id: input_boolean.notify_kassandra
+      state: 'on'
+  action:
+    - data:
+        data:
+          push:
+            badge: 1
+        title: Garbage and Recycling Tomorrow!
+        message: Remember to take out the cans
+      service: notify.ios_kassandras_iphone
+  hide_entity: true
+  initial_state: true
 - alias: Version Update Reminder
   id: reminder-version
   trigger:
@@ -212,6 +273,9 @@
   condition:
     - condition: template
       value_template: "{{ states.sensor.available_ha_version.state != states.sensor.installed_ha_version.state }}"
+    - condition: state
+      entity_id: input_boolean.notify_ian
+      state: 'on'
   action:
     - data_template:
         data:

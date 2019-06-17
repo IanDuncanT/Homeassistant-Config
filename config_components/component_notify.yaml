@@ -1,0 +1,10 @@
+- name: pushbullet_ian
+  platform: pushbullet
+  api_key: !secret pushbullet_key
+
+- name: alexa_media
+  platform: alexa_media
+
+- name: telegram_ian
+  platform: telegram
+  chat_id: !secret telegram_allowed_1

@@ -1,5 +1,5 @@
-# Home assistant config - v0.3.0
-# 2019-02-24T16:30
+# Home assistant config - v0.4.0
+# 2019-06-17T13:33
 
 # Backend
 homeassistant:
@@ -11,38 +11,28 @@ homeassistant:
   time_zone: !secret time_zone
   customize: !include customize.yaml
 
-updater:
-  include_used_components: true
-
-custom_updater:
-  track:
-    - cards
-    - components
-    - python-scripts
-  card_urls:
-    - https://raw.githubusercontent.com/custom-cards/information/master/repos.json
-
-mqtt: !include config/mqtt.yaml
-
-influxdb:
-  host: !secret influx_host
-  database: homeassistant
-  username: !secret influx_username
-  password: !secret influx_password
-
 group: !include groups.yaml
 
 automation: !include automations.yaml
 
 script: !include scripts.yaml
 
-# Web Interface
+recorder: !include config_components/backend_recorder.yaml
+
+logger: !include config_components/backend_logger.yaml
+
+updater:
+  include_used_components: true
+
+custom_updater: !include config_components/backend_custom_updater.yaml
+
+mqtt: !include config_components/backend_mqtt.yaml
+
+# Web Frontend
 http:
   base_url: !secret base_url
 
-duckdns:
-  domain: !secret duckdns_domain
-  access_token: !secret duckdns_token
+conversation:
 
 frontend:
   themes: !include_dir_merge_named themes
@@ -54,77 +44,64 @@ frontend:
 lovelace:
   mode: yaml
 
-panel_iframe: !include config/iframe.yaml
-
-conversation:
-
-tts: !include config/tts.yaml
-
-recorder:
-    purge_keep_days: 5
-    purge_interval: 1
-
 map:
+
+zone: !include config_components/frontend_zone.yaml
 
 logbook:
 
 history:
 
+panel_iframe: !include config_components/frontend_iframe.yaml
+
 config:
 
 system_health:
 
-ios: !include config/ios.yaml
+# Mobile Frontend
+ios: !include config_components/frontend_ios.yaml
 
 mobile_app:
 
-homekit:
+# Components
+duckdns:
+  domain: !secret duckdns_domain
+  access_token: !secret duckdns_token
 
-notify: !include config/notify.yaml
+speedtestdotnet: !include config_components/component_speedtest.yaml
 
-# Map Zones
-zone: !include config/zone.yaml
+alarm_control_panel: !include config_components/component_alarm.yaml
 
-# Sensors
-sun:
+sensor: !include config_components/component_sensor.yaml
 
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api
+binary_sensor: !include config_components/component_sensor_binary.yaml
 
-speedtestdotnet: !include config/speedtest.yaml
+switch: !include config_components/component_switch.yaml
 
-sensor: !include config/sensor.yaml
+light: !include config_components/component_light.yaml
 
-binary_sensor: !include config/binary_sensor.yaml
+media_player: !include config_components/component_media_player.yaml
 
-switch: !include config/switch.yaml
+apple_tv: !include config_components/component_media_player_appletv.yaml
 
-light: !include config/light.yaml
-
-input_boolean: !include config/input_boolean.yaml
-
-device_tracker: !include config/device_tracker.yaml
+alexa_media: !include config_components/component_media_player_alexa.yaml
 
 person:
 
-shopping_list:
+device_tracker: !include config_components/component_device_tracker.yaml
 
-apple_tv: !include config/apple_tv.yaml
+geo_location: !include config_components/component_geo_location.yaml
 
-media_player: !include config/media_player.yaml
+sun:
 
-alexa_media:
-  accounts:
-    - email: !secret alexa_email
-      password: !secret alexa_pass
-      url: !secret alexa_url
+weather: !include config_components/component_weather.yaml
 
-geo_location: !include config/geo_location.yaml
+aqaulink: !include config_components/component_pool_aqualink.yaml
 
-aqualink:
-  username: !secret pool_user
-  password: !secret pool_pass
+notify: !include config_components/component_notify.yaml
 
-# Alarm
-alarm_control_panel: !include config/alarm.yaml
+telegram_bot: !include config_components/component_notify_telegram.yaml
+
+tts: !include config_components/component_tts.yaml
+
+input_boolean: !include config_components/component_input_boolean.yaml

@@ -1,0 +1,11 @@
+guest_mode:
+  name: Guest Mode
+  icon: mdi:account-alert
+
+notify_kassandra:
+  name: Notify Kassandra
+  icon: mdi:account
+
+notify_ian:
+  name: Notify Ian
+  icon: mdi:account

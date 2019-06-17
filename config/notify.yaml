@@ -1,6 +1,0 @@
-- name: pushbullet_ian
-  platform: pushbullet
-  api_key: !secret pushbullet_key 
-
-- name: alexa_media
-  platform: alexa_media

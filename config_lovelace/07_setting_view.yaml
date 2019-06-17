@@ -67,6 +67,13 @@ cards:
             - type: custom:tracker-card
             - break
             - type: entities
+              title: Notify Switches
+              entities:
+                - entity: input_boolean.notify_kassandra
+                  type: custom:toggle-lock-entity-row
+                - entity: input_boolean.notify_ian
+                  type: custom:toggle-lock-entity-row
+            - type: entities
               title: Modes
               show_header_toggle: false
               entities:

@@ -1,0 +1,2 @@
+username: !secret pool_user
+password: !secret pool_pass

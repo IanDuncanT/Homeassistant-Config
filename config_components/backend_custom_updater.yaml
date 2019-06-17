@@ -1,0 +1,6 @@
+track:
+  - cards
+  - components
+  - python-scripts
+card_urls:
+  - https://raw.githubusercontent.com/custom-cards/information/master/repos.json
